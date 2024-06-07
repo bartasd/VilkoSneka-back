@@ -16,14 +16,9 @@ export class AuthController {
 
   @Public()
   @HttpCode(HttpStatus.OK)
-  @Post('login')
+  @Post()
   async signIn(@Body() createUserDto: CreateUserDto) {
     const login = await this.authService.signIn(createUserDto);
     return login;
-  }
-
-  @Get('profile')
-  getProfile() {
-    return true;
   }
 }
