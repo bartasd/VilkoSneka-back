@@ -5,17 +5,16 @@ import {
   HttpCode,
   HttpStatus,
   Post,
-  Request,
-  UseGuards,
 } from '@nestjs/common';
+import { Public } from '../decorators/decorators';
 import { AuthService } from './auth.service';
-import { AuthGuard } from './auth.guard';
 import { CreateUserDto } from '../users/dto/CreateUser.dto';
 
 @Controller('auth')
 export class AuthController {
   constructor(private authService: AuthService) {}
 
+  @Public()
   @HttpCode(HttpStatus.OK)
   @Post('login')
   async signIn(@Body() createUserDto: CreateUserDto) {
@@ -23,7 +22,6 @@ export class AuthController {
     return login;
   }
 
-  @UseGuards(AuthGuard)
   @Get('profile')
   getProfile() {
     return true;

@@ -26,4 +26,8 @@ export class UsersService {
     const user = await this.userModel.findOne({ username });
     return user;
   }
+
+  getDashboard() {
+    return { dashboard: 'dummy' };
+  }
 }
