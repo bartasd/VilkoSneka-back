@@ -11,21 +11,22 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async signIn(createUserDto: CreateUserDto): Promise<any> {
+  async validateUser(createUserDto: CreateUserDto): Promise<boolean> {
     const user = await this.usersService.getUserByUsername(
       createUserDto.username,
     );
-    if (user) {
-      const testPass = await bcrypt.hash(createUserDto.password, user.salt);
-      if (user.password === testPass) {
-        const { password, ...result } = user;
-        const payload = { username: user.username, password: user.password };
-        return {
-          access_token: await this.jwtService.signAsync(payload),
-        };
-      } else {
-        throw new UnauthorizedException();
-      }
+    if (!user) return false;
+    const testPass = await bcrypt.hash(createUserDto.password, user.salt);
+    return user.password === testPass;
+  }
+
+  async signIn(createUserDto: CreateUserDto): Promise<any> {
+    const isValidUser = await this.validateUser(createUserDto);
+    if (isValidUser) {
+      const payload = { username: createUserDto.username };
+      return {
+        access_token: await this.jwtService.signAsync(payload),
+      };
     } else {
       throw new UnauthorizedException();
     }
