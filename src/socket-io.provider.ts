@@ -14,8 +14,9 @@ export const initSocketIo = (server: any) => {
   io.on('connection', (socket) => {
     //console.log('a user connected');
     const jwt = socket.handshake.auth.token;
-    const userData = JSON.parse(atob(jwt.split('.')[1]));
-    const user = userData.username;
+    // kazkaip susitvarkyti, kad nevykdytu, kai nera prisiloginta....
+    const userData = jwt ? JSON.parse(atob(jwt.split('.')[1])) : null;
+    const user = jwt ? userData.username : null;
 
     socket.on('disconnect', () => {
       console.log('user disconnected');
