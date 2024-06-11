@@ -22,41 +22,23 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+# Vilko Sneka is a basic real time messaging app
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## More About
 
-## Installation
+This is messaging app [VilkoSneka](https://github.com/bartasd/VilkoSneka) back-end part. More about it you can read in front-ends part [readme.md](https://github.com/bartasd/VilkoSneka/blob/main/README.md)
 
-```bash
-$ npm install
-```
+## Available Scripts
 
-## Running the app
+In the project directory, you can run:
 
-```bash
-# development
-$ npm run start
+### `npm start`
 
-# watch mode
-$ npm run start:dev
+Runs the app in the development mode.\
+Open [http://localhost:3001](http://localhost:3001) to view it in the browser.
 
-# production mode
-$ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
 ## Support
 
