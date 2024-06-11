@@ -14,4 +14,8 @@ export class MessageService {
     const newMessage = new this.messageModel(createMessageDto);
     return newMessage.save();
   }
+
+  async getAll() {
+    return await this.messageModel.find().exec();
+  }
 }

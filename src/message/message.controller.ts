@@ -1,4 +1,4 @@
-import { Controller, Post, Body, UseGuards, Req } from '@nestjs/common';
+import { Controller, Post, Get, Body, UseGuards, Req } from '@nestjs/common';
 import { MessageService } from './message.service';
 import { CreateMessageDto } from './dto/CreateMessage.dto';
 import { Public } from '../decorators/decorators';
@@ -9,6 +9,12 @@ export class MessageController {
   constructor(private messageService: MessageService) {}
 
   // GET ROUTES
+  @Public()
+  // @UseGuards(JwtAuthGuard)
+  @Get('getAll')
+  async getAll() {
+    return await this.messageService.getAll();
+  }
 
   // POST ROUTES
   @Public()
